@@ -50,12 +50,6 @@ END
 // DLL
 //
 
-#ifdef _DEBUG
-IDR_DLLPROXY            DLL                     "..\\Debug\\iscsiexe.dll"
-#elif _NDEBUG
-IDR_DLLPROXY            DLL                     "..\\Release\\iscsiexe.dll"
-#endif
-
 IDR_DLLORIG             DLL                     "iscsiexe_org.dll"
 
 
@@ -66,7 +60,7 @@ IDR_DLLORIG             DLL                     "iscsiexe_org.dll"
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ICON1               ICON                    "derpcalc.ico"
+IDI_ICON1               ICON                    "D:\\Study\\NCKH\\2022\\NCKH2022\\iscsicpl_bypassUAC\\icon.ico"
 
 #endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
