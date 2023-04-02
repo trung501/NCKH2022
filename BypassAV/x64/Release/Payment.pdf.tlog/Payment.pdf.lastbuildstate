@@ -1,2 +1,2 @@
-PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.32.31326:TargetPlatformVersion=10.0.19041.0:
+#TargetFrameworkVersion=:PlatformToolSet=v141:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native64Bit:WindowsTargetPlatformVersion=10.0.19041.0
 Release|x64|D:\Study\NCKH\2022\NCKH2022\BypassAV\|

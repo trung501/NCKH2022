@@ -1,7 +1,0 @@
-﻿  ConsoleApplication1.cpp
-d:\study\nckh\2022\nckh2022\bypassav\consoleapplication1.cpp(232): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-d:\study\nckh\2022\nckh2022\bypassav\consoleapplication1.cpp(153): warning C4101: 'dwStatus': unreferenced local variable
-d:\study\nckh\2022\nckh2022\bypassav\consoleapplication1.cpp(149): warning C4101: 'hHttpConnection': unreferenced local variable
-d:\study\nckh\2022\nckh2022\bypassav\consoleapplication1.cpp(154): warning C4101: 'dwStatusSize': unreferenced local variable
-MSVCRTD.lib(exe_winmain.obj) : error LNK2019: unresolved external symbol WinMain referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-D:\Study\NCKH\2022\NCKH2022\BypassAV\x64\Debug\Payment.pdf.exe : fatal error LNK1120: 1 unresolved externals
