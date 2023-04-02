@@ -3,6 +3,7 @@ class ChangeUrl:
     def __init__(self,template_path="template") :
         self.template_path = template_path
         self.notFail = True
+        print("NOTE: Port communication default 8082")
         # check file exist
         try:
             print("Read file template")
