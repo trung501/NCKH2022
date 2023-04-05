@@ -97,7 +97,6 @@
     <ResourceCompile Include="iscsicpl_BypassUAC.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\defender-control.exe" />
     <None Include="..\Release\iscsiexe.dll" />
     <None Include="iscsiexe_org.dll" />
   </ItemGroup>

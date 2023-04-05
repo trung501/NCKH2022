@@ -32,7 +32,6 @@
   <ItemGroup>
     <None Include="iscsiexe_org.dll" />
     <None Include="..\Release\iscsiexe.dll" />
-    <None Include="..\defender-control.exe" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="derpcalc.ico">

@@ -68,14 +68,6 @@ IDR_DLLORIG             DLL                     "iscsiexe_org.dll"
 // remains consistent on all systems.
 IDI_ICON1               ICON                    "derpcalc.ico"
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// EXE
-//
-
-IDR_EXE1                EXE                     "C:\\Users\\TRUNG\\Desktop\\1\\iscsicpl_bypassUAC2\\defender-control.exe"
-
 #endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 

